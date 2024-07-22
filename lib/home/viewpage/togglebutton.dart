@@ -1,17 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:toggle_button/core/controller/controller.dart';
 import 'package:toggle_button/home/viewpage/page2.dart';
 
-class ToggleButtonPage extends StatefulWidget {
-  const ToggleButtonPage({super.key});
+class ToggleButtonPage extends StatelessWidget {
+  final tbController = Get.put(ToggleButtonController());
 
-  @override
-  State<ToggleButtonPage> createState() => _ToggleButtonPageState();
-}
-
-class _ToggleButtonPageState extends State<ToggleButtonPage> {
-  bool _switchState = false;
+  ToggleButtonPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,25 +17,19 @@ class _ToggleButtonPageState extends State<ToggleButtonPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CupertinoSwitch(
-                value: _switchState,
-                onChanged: (value) {
-                  setState(() {
-                    _switchState = value;
-                    // print('Switch state: $_switchState');
-                  });
-                },
-              ),
+              Obx(() => CupertinoSwitch(
+                    value: tbController.switchState.value,
+                    onChanged: (value) {
+                      tbController.switchState.value = value;
+                    },
+                  )),
               const SizedBox(height: 20),
+              Text(tbController.switchState.value.toString()),
               ElevatedButton(
                 onPressed: () {
-                  if (_switchState == true) {
-                    Get.to(const Page2());
+                  if (tbController.switchState.value) {
+                    Get.to(() => const Page2());
                   }
-                  // else
-                  // {
-                  // print('Button is OFF');
-                  // }
                 },
                 child: const Text(
                   'Continue',
