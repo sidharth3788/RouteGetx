@@ -33,7 +33,6 @@ class ToggleButtonPage extends StatelessWidget {
                 },
                 child: const Text(
                   'Continue',
-                  style: TextStyle(color: Color(0xFF041444)),
                 ),
               ),
             ],
