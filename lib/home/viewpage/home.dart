@@ -11,7 +11,7 @@ class ToggleButtonPage extends StatefulWidget {
 }
 
 class _ToggleButtonPageState extends State<ToggleButtonPage> {
-  bool _isOn = false;
+  bool _switchState = true;
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +22,28 @@ class _ToggleButtonPageState extends State<ToggleButtonPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CupertinoSwitch(
-                value: _isOn,
+                value: _switchState,
                 onChanged: (value) {
                   setState(() {
-                    _isOn = value;
+                    _switchState = value;
+                    print('Switch state: $_switchState');
                   });
                 },
               ),
+              Text(_switchState.toString()),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Get.to(const Page2());
+                  if (_switchState == true) {
+                    Get.to(const Page2());
+                  } else {
+                    print('Button is OFF');
+                  }
                 },
-                child: const Text('Goto Next Page'),
+                child: const Text(
+                  'Go to Next Page',
+                  style: TextStyle(color: Color(0xFF041444)),
+                ),
               ),
             ],
           ),
