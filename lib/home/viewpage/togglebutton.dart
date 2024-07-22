@@ -24,9 +24,6 @@ class ToggleButtonPage extends StatelessWidget {
                     },
                   )),
               const SizedBox(height: 20),
-              Text(
-                tbController.switchState.value.toString(),
-              ),
               ElevatedButton(
                 onPressed: () {
                   if (tbController.switchState.value) {
