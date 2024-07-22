@@ -9,9 +9,8 @@ class Page2 extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Text(
-            'Welcome to new Page',
+            'Successfully Routed.',
             style: TextStyle(
-              color: Colors.red,
               fontWeight: FontWeight.bold,
               fontSize: 24,
             ),

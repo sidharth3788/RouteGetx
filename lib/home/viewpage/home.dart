@@ -26,22 +26,40 @@ class _ToggleButtonPageState extends State<ToggleButtonPage> {
                 onChanged: (value) {
                   setState(() {
                     _switchState = value;
-                    print('Switch state: $_switchState');
+                    // print('Switch state: $_switchState');
                   });
                 },
               ),
-              Text(_switchState.toString()),
+              // RichText(
+              //   text: TextSpan(
+              //       text: 'Button state is ',
+              //       style: TextStyle(
+              //         color: Colors.grey[600],
+              //         fontWeight: FontWeight.bold,
+              //       ),
+              //       children: <TextSpan>[
+              //         TextSpan(
+              //           text: _switchState.toString(),
+              //           style: const TextStyle(
+              //             color: Color(0xFF041444),
+              //             fontWeight: FontWeight.bold,
+              //           ),
+              //         )
+              //       ]),
+              // ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   if (_switchState == true) {
                     Get.to(const Page2());
-                  } else {
-                    print('Button is OFF');
                   }
+                  // else
+                  // {
+                  // print('Button is OFF');
+                  // }
                 },
                 child: const Text(
-                  'Go to Next Page',
+                  'Continue',
                   style: TextStyle(color: Color(0xFF041444)),
                 ),
               ),
